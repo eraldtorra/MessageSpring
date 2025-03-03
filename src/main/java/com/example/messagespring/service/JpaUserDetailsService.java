@@ -1,5 +1,8 @@
 package com.example.messagespring.service;
 
+import com.example.messagespring.dto.Register;
+import com.example.messagespring.entity.Authority;
+import com.example.messagespring.entity.User;
 import com.example.messagespring.repo.UserRepository;
 import com.example.messagespring.security.SecurityUser;
 import lombok.AllArgsConstructor;
@@ -15,6 +18,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) {
         var u = userRepository.findByUsername(username);
@@ -24,14 +28,7 @@ public class JpaUserDetailsService implements UserDetailsService {
     }
 
 
-    // method for password if password is data
-    public Boolean checkPassword(String username, String password) {
-        var u = userRepository.findByUsername(username);
-        if (u.isPresent()) {
-            return u.get().getPassword().equals(password);
-        }
-        return false;
-    }
+
 
 
 }

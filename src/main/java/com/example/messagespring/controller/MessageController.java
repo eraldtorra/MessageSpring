@@ -4,6 +4,7 @@ import com.example.messagespring.model.Message;
 import com.example.messagespring.entity.MessageEntity;
 import com.example.messagespring.repo.MessageRepository;
 import com.example.messagespring.service.MessageService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -20,12 +21,11 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@AllArgsConstructor
 public class MessageController {
 
-    @Autowired
-    private  MessageRepository messageRepository;
 
-    @Autowired
+
     private MessageService messageService;
 
     @MessageMapping("/chat.send")

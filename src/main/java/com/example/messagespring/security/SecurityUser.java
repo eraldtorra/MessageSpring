@@ -33,6 +33,10 @@ public class SecurityUser implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+    public int getId() {
+        return user.getId();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

@@ -1,6 +1,7 @@
 package com.example.messagespring.controller;
 
 import com.example.messagespring.dto.login;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.shell.command.annotation.Command;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -17,17 +18,20 @@ public class DemoController {
     @GetMapping("/demo")
     public String demo(Principal principal) {
 
+        // how to get the current token
+        String token = SecurityContextHolder.getContext().getAuthentication().getCredentials().toString();
+
+
+        System.out.println("Token: "+token);
         return "Hello "+ principal.getName();
     }
 
-    @PostMapping("/auth")
-    public String helloPost(@RequestBody login login) {
-        System.out.println(login.getUsername());
-        if (login.getUsername() == null)
-        {
-            throw new NullPointerException();
-        }
 
-        return "Hello World";
+
+
+    @GetMapping("/demo1")
+    public Boolean demo1() {
+        return true;
     }
+
 }
