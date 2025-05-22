@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,8 @@ public class User {
 
     private String password;
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_authorities",
@@ -28,4 +31,20 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
     private Set<Authority> authorities;
+
+
+    @OneToMany(mappedBy = "user1")
+    private List<DirectChats> sentChats;
+
+    @OneToMany(mappedBy = "user2")
+    private List<DirectChats> receivedChats;
+
+    @OneToMany(mappedBy = "user")
+    private List<Messages> messages;
+
+
+    @OneToOne(mappedBy = "userId")
+    private UserProfiles userProfiles;
+
+
 }

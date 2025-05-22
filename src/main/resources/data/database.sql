@@ -38,9 +38,9 @@ INSERT INTO authorities (name) VALUES
 
 -- Insert sample users (using NoOpPasswordEncoder as per your SecurityConfig)
 INSERT INTO users (username, password) VALUES
-('user1', 'password'),
-('user2', 'password'),
-('admin', 'adminpass');
+('user1', '12345'),
+('user2', '12345'),
+('admin', '12345');
 
 -- Assign authorities to users
 INSERT INTO users_authorities (user_id, authority_id) VALUES
